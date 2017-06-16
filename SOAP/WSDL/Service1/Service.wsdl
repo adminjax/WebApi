@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="soap" targetNamespace="urn:soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="urn:soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+<types xmlns="http://schemas.xmlsoap.org/wsdl/" />
+<portType name="soapPort"><operation name="test">
+<input message="tns:testRequest" />
+<output message="tns:testResponse" />
+</operation>
+<operation name="add">
+<input message="tns:addRequest" />
+<output message="tns:addResponse" />
+</operation>
+<operation name="setName">
+<input message="tns:setNameRequest" />
+<output message="tns:setNameResponse" />
+</operation>
+<operation name="getName">
+<input message="tns:getNameRequest" />
+<output message="tns:getNameResponse" />
+</operation>
+</portType>
+<binding name="soapBinding" type="tns:soapPort">
+<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+<operation name="test">
+<soap:operation soapAction="urn:soap#Service#test" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="add">
+<soap:operation soapAction="urn:soap#Service#add" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="setName">
+<soap:operation soapAction="urn:soap#Service#setName" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+<operation name="getName">
+<soap:operation soapAction="urn:soap#Service#getName" />
+<input><soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</input>
+<output>
+<soap:body use="encoded" namespace="urn:soap" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+</output>
+</operation>
+</binding>
+<service name="soap">
+<documentation />
+<port name="soapPort" binding="tns:soapBinding"><soap:address location="http://www.website.com:80/WebApi/SOAP/WSDL/Service1/CreateWsdl.php" />
+</port>
+</service>
+<message name="testRequest">
+</message>
+<message name="testResponse">
+<part name="test" type="xsd:string" />
+</message>
+<message name="addRequest">
+<part name="a" type="xsd:string" />
+<part name="b" type="xsd:string" />
+</message>
+<message name="addResponse">
+<part name="add" type="xsd:string" />
+</message>
+<message name="setNameRequest">
+<part name="name" type="xsd:string" />
+</message>
+<message name="setNameResponse">
+<part name="setName" type="xsd:string" />
+</message>
+<message name="getNameRequest">
+</message>
+<message name="getNameResponse">
+<part name="getName" type="xsd:string" />
+</message>
+</definitions>
